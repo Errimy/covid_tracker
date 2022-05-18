@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
           (_)=> AuthentificationClass(FirebaseAuth.instance),
           ),
           StreamProvider(
-              create: (context)=> context.read<AuthentificationClass>().authStateChanges,
+              create: (context)=> context.read<AuthentificationClass>().authStateChanges, initialData: null,
           )
           ],
     child: MaterialApp(
