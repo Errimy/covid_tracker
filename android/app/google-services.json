@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "405421609122",
+    "firebase_url": "https://covidtracker-dadfe-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "covidtracker-dadfe",
+    "storage_bucket": "covidtracker-dadfe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:405421609122:android:c270cacf56d1961c4107fb",
+        "android_client_info": {
+          "package_name": "com.example.covid_tracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "405421609122-9f4m0hr0desh10fquhmrfdtkkubvu4mr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzdIQqHSzYEdXVftBwiaCjhpO-c_I_az0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "405421609122-9f4m0hr0desh10fquhmrfdtkkubvu4mr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+
 import 'Register.dart';
 import 'package:flutter/material.dart';
 class Login extends StatefulWidget {
@@ -19,7 +21,8 @@ class _LoginState extends State<Login> {
       appBar: AppBar(
         title: Text('Covid Tracker'),
         actions: [
-          FlatButton.icon(
+          TextButton.icon(
+              style: TextButton.styleFrom(primary: Colors.white),
               onPressed: (){
                 Navigator.push(context, MaterialPageRoute(builder: (context)=>Register()));
               },
@@ -67,12 +70,13 @@ class _LoginState extends State<Login> {
                 obscureText: true,
               ),
               SizedBox(height: 20.0,),
-              RaisedButton(
-                color: Colors.pink,
+              ElevatedButton(
                 child: Text('Sign In',style: TextStyle(color: Colors.white),),
                 onPressed: () {
                   if(_formKey.currentState!.validate()){
-                    print('ok !!!');
+                    print('ok !!!'+email);
+                    signIn();
+
                   }
 
                 },
@@ -84,5 +88,9 @@ class _LoginState extends State<Login> {
         ),
       ),
     );
+  }
+
+  Future signIn() async{
+    await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password);
   }
 }

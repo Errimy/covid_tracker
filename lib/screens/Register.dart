@@ -1,6 +1,7 @@
-import 'package:covid_tracker/AuthentificationClass.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+
+import 'Login.dart';
 class Register extends StatefulWidget {
   const Register({Key? key}) : super(key: key);
 
@@ -64,13 +65,29 @@ class _RegisterState extends State<Register> {
                 color: Colors.amber,
                 child: Text('Sign UP',style: TextStyle(color: Colors.white),),
                 onPressed: () {
-                  context.read<AuthentificationClass>().signIn(email: email, password: password);
+                  if(_formKey.currentState!.validate()){
+                    print('ok !!!');
+                    signUp();
                   }
+
+                },
+
               )
+
             ],
           ),
         ),
       ),
     );
+  }
+
+  Future signUp() async{
+    try{
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(email: email, password: password);
+      Navigator.push(context, MaterialPageRoute(builder: (context)=>Login()));
+    }
+    on FirebaseAuthException catch(e){
+      print(e);
+    }
   }
 }
