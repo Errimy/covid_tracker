@@ -1,4 +1,6 @@
+import 'package:covid_tracker/AuthentificationClass.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 class Register extends StatefulWidget {
   const Register({Key? key}) : super(key: key);
 
@@ -62,14 +64,9 @@ class _RegisterState extends State<Register> {
                 color: Colors.amber,
                 child: Text('Sign UP',style: TextStyle(color: Colors.white),),
                 onPressed: () {
-                  if(_formKey.currentState!.validate()){
-                    print('ok !!!');
+                  context.read<AuthentificationClass>().signIn(email: email, password: password);
                   }
-
-                },
-
               )
-
             ],
           ),
         ),
