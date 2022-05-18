@@ -1,9 +1,12 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 import 'screens/Login.dart';
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  MyApp({Key? key}) : super(key: key);
+
+  final Future<FirebaseApp> _initialization=Firebase.initializeApp();
 
   // This widget is the root of your application.
   @override
@@ -13,7 +16,18 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
     primarySwatch: Colors.pink,
     ),
-    home: const Login(),
+    home: FutureBuilder(
+      future: _initialization,
+      builder: (context, snapshot){
+        if(snapshot.hasError){
+          print("Error");
+        }
+        if(snapshot.connectionState== ConnectionState.done){
+          return Login();
+        }
+        return CircularProgressIndicator();
+      },
+    ),
     debugShowCheckedModeBanner: false,
     );
   }
